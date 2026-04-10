@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>세무회계청천 | 인천 송도 세무사</title>
+  <meta name="description" content="인천 송도 연수구 세무회계청천 김지수 세무사 | 기장·종합소득세·양도소득세·증여상속세·사업자등록·세무조사 대응">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.0/css/all.min.css" />
+  <style>
+    /* ===== RESET & BASE ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      color: #222;
+      background: #fff;
+      line-height: 1.7;
+    }
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; }
+
+    /* ===== COLOR TOKENS ===== */
+    :root {
+      --primary: #1a4fa8;
+      --primary-dark: #133a80;
+      --primary-light: #e8eef8;
+      --accent: #f5a623;
+      --gray-50: #f8f9fb;
+      --gray-100: #f1f3f7;
+      --gray-200: #e2e6ee;
+      --gray-500: #8a93a6;
+      --gray-700: #444c5e;
+      --gray-900: #1a1e2e;
+      --radius: 12px;
+      --shadow: 0 4px 24px rgba(26,79,168,.10);
+      --shadow-sm: 0 2px 10px rgba(26,79,168,.07);
+    }
+
+    /* ===== LAYOUT ===== */
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+    section { padding: 80px 0; }
+
+    /* ===== HEADER / NAV ===== */
+    header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 900;
+      background: rgba(255,255,255,.96);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--gray-200);
+      transition: box-shadow .3s;
+    }
+    header.scrolled { box-shadow: var(--shadow-sm); }
+    nav {
+      display: flex; align-items: center; justify-content: space-between;
+      height: 64px;
+    }
+    .logo {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 1.15rem; font-weight: 700; color: var(--primary);
+    }
+    .logo i { font-size: 1.4rem; }
+    .nav-links {
+      display: flex; gap: 32px; list-style: none;
+    }
+    .nav-links a {
+      font-size: .92rem; font-weight: 500; color: var(--gray-700);
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--primary); }
+    .nav-cta {
+      background: var(--primary); color: #fff;
+      padding: 9px 20px; border-radius: 8px;
+      font-size: .9rem; font-weight: 600;
+      transition: background .2s;
+    }
+    .nav-cta:hover { background: var(--primary-dark); }
+    .hamburger {
+      display: none; background: none; border: none;
+      font-size: 1.4rem; color: var(--primary); cursor: pointer;
+    }
+
+    /* ===== HERO ===== */
+    #hero {
+      margin-top: 64px;
+      background: linear-gradient(135deg, #0f2d6b 0%, #1a4fa8 60%, #2563c0 100%);
+      padding: 100px 0 90px;
+      color: #fff;
+      position: relative; overflow: hidden;
+    }
+    #hero::after {
+      content: '';
+      position: absolute; right: -80px; top: -80px;
+      width: 500px; height: 500px;
+      background: rgba(255,255,255,.04);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .hero-inner {
+      display: flex; align-items: center; justify-content: space-between; gap: 40px;
+    }
+    .hero-text { max-width: 560px; }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(255,255,255,.15);
+      border: 1px solid rgba(255,255,255,.3);
+      color: #fff;
+      font-size: .82rem; font-weight: 600;
+      padding: 5px 14px; border-radius: 20px;
+      margin-bottom: 20px; letter-spacing: .5px;
+    }
+    .hero-title {
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      font-weight: 700; line-height: 1.3;
+      margin-bottom: 18px;
+    }
+    .hero-title span { color: #ffd166; }
+    .hero-desc {
+      font-size: 1.05rem; color: rgba(255,255,255,.85);
+      margin-bottom: 36px; line-height: 1.8;
+    }
+    .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+    .btn-primary {
+      background: #fff; color: var(--primary);
+      padding: 14px 28px; border-radius: 10px;
+      font-weight: 700; font-size: 1rem;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,.2); }
+    .btn-outline {
+      border: 2px solid rgba(255,255,255,.6); color: #fff;
+      padding: 12px 26px; border-radius: 10px;
+      font-weight: 600; font-size: 1rem;
+      transition: background .2s, border-color .2s;
+    }
+    .btn-outline:hover { background: rgba(255,255,255,.15); border-color: #fff; }
+    .hero-card {
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.25);
+      backdrop-filter: blur(6px);
+      border-radius: 16px;
+      padding: 32px 28px;
+      min-width: 260px;
+      flex-shrink: 0;
+    }
+    .hero-card-item {
+      display: flex; align-items: center; gap: 14px;
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(255,255,255,.15);
+      color: rgba(255,255,255,.9);
+      font-size: .93rem;
+    }
+    .hero-card-item:last-child { border-bottom: none; }
+    .hero-card-item i { font-size: 1.1rem; color: #ffd166; width: 20px; text-align: center; }
+
+    /* ===== SECTION TITLE ===== */
+    .section-title {
+      text-align: center; margin-bottom: 52px;
+    }
+    .section-title .label {
+      display: inline-block;
+      background: var(--primary-light); color: var(--primary);
+      font-size: .8rem; font-weight: 700; letter-spacing: 1px;
+      padding: 4px 14px; border-radius: 20px;
+      margin-bottom: 12px;
+    }
+    .section-title h2 {
+      font-size: clamp(1.6rem, 3vw, 2.1rem); font-weight: 700;
+      color: var(--gray-900); margin-bottom: 14px;
+    }
+    .section-title p {
+      color: var(--gray-500); font-size: .97rem; max-width: 520px; margin: 0 auto;
+    }
+
+    /* ===== ABOUT ===== */
+    #about { background: var(--gray-50); }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px; align-items: center;
+    }
+    .about-img-wrap {
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: linear-gradient(135deg, var(--primary-light), #dce8fb);
+      height: 340px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .about-img-wrap i { font-size: 6rem; color: var(--primary); opacity: .35; }
+    .about-text h3 {
+      font-size: 1.55rem; font-weight: 700;
+      color: var(--gray-900); margin-bottom: 8px;
+    }
+    .about-text .sub {
+      color: var(--primary); font-weight: 600; font-size: .93rem; margin-bottom: 18px;
+    }
+    .about-text p {
+      color: var(--gray-700); font-size: .96rem; line-height: 1.9; margin-bottom: 14px;
+    }
+    .about-info-list { margin-top: 24px; display: flex; flex-direction: column; gap: 10px; }
+    .about-info-item {
+      display: flex; align-items: flex-start; gap: 12px;
+      font-size: .92rem; color: var(--gray-700);
+    }
+    .about-info-item i { color: var(--primary); margin-top: 3px; width: 16px; }
+
+    /* ===== SERVICES ===== */
+    #services { background: #fff; }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .service-card {
+      background: var(--gray-50);
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius);
+      padding: 32px 24px;
+      transition: transform .25s, box-shadow .25s, border-color .25s;
+      opacity: 0; transform: translateY(24px);
+    }
+    .service-card.visible { opacity: 1; transform: translateY(0); transition: opacity .5s ease, transform .5s ease, box-shadow .25s; }
+    .service-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+      border-color: var(--primary);
+    }
+    .service-icon {
+      width: 52px; height: 52px;
+      background: var(--primary-light);
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem; color: var(--primary);
+      margin-bottom: 18px;
+    }
+    .service-card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 10px; }
+    .service-card p { font-size: .88rem; color: var(--gray-500); line-height: 1.75; }
+
+    /* ===== NOTICE (공지/안내) ===== */
+    #notice { background: var(--gray-50); }
+    .notice-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+    }
+    .notice-box {
+      background: #fff;
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius);
+      padding: 32px 28px;
+      box-shadow: var(--shadow-sm);
+    }
+    .notice-box h3 {
+      font-size: 1.05rem; font-weight: 700;
+      color: var(--gray-900); margin-bottom: 20px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .notice-box h3 i { color: var(--primary); }
+    .hours-table { width: 100%; border-collapse: collapse; font-size: .9rem; }
+    .hours-table td { padding: 9px 0; border-bottom: 1px solid var(--gray-100); }
+    .hours-table td:first-child { color: var(--gray-700); font-weight: 500; width: 60%; }
+    .hours-table td:last-child { color: var(--primary); font-weight: 600; }
+    .hours-table tr:last-child td { border-bottom: none; }
+    .prepare-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .prepare-list li {
+      display: flex; align-items: flex-start; gap: 10px;
+      font-size: .9rem; color: var(--gray-700);
+    }
+    .prepare-list li::before {
+      content: '✓'; color: var(--primary);
+      font-weight: 700; flex-shrink: 0; margin-top: 1px;
+    }
+    .map-placeholder {
+      background: var(--gray-100);
+      border-radius: 10px;
+      height: 160px;
+      display: flex; align-items: center; justify-content: center;
+      flex-direction: column; gap: 8px;
+      color: var(--gray-500); font-size: .88rem; margin-top: 16px;
+    }
+    .map-placeholder i { font-size: 1.8rem; color: var(--primary); }
+    .map-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: var(--primary); color: #fff;
+      padding: 8px 16px; border-radius: 8px;
+      font-size: .85rem; font-weight: 600;
+      margin-top: 10px; transition: background .2s;
+    }
+    .map-link:hover { background: var(--primary-dark); }
+
+    /* ===== FAQ ===== */
+    #faq { background: #fff; }
+    .faq-list { max-width: 760px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
+    .faq-item {
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius); overflow: hidden;
+    }
+    .faq-q {
+      width: 100%; background: none; border: none; cursor: pointer;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 22px;
+      font-size: .97rem; font-weight: 600; color: var(--gray-900);
+      text-align: left; transition: background .2s;
+    }
+    .faq-q:hover { background: var(--gray-50); }
+    .faq-q .badge { color: var(--primary); font-weight: 700; margin-right: 10px; }
+    .faq-q i { transition: transform .3s; color: var(--gray-500); flex-shrink: 0; }
+    .faq-item.open .faq-q i { transform: rotate(180deg); }
+    .faq-a {
+      max-height: 0; overflow: hidden;
+      transition: max-height .35s ease, padding .35s ease;
+      padding: 0 22px;
+      font-size: .92rem; color: var(--gray-700); line-height: 1.8;
+    }
+    .faq-item.open .faq-a { max-height: 400px; padding: 0 22px 20px; }
+
+    /* ===== 상담 접수 FORM ===== */
+    #consult { background: linear-gradient(135deg, #0f2d6b, #1a4fa8); padding: 90px 0; }
+    #consult .section-title h2 { color: #fff; }
+    #consult .section-title p { color: rgba(255,255,255,.75); }
+    #consult .section-title .label { background: rgba(255,255,255,.15); color: #fff; }
+    .form-wrap {
+      max-width: 680px; margin: 0 auto;
+      background: #fff; border-radius: 18px;
+      padding: 40px 40px;
+      box-shadow: 0 20px 60px rgba(0,0,0,.2);
+    }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+    .form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
+    .form-group label { font-size: .87rem; font-weight: 600; color: var(--gray-700); }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      border: 1.5px solid var(--gray-200);
+      border-radius: 8px; padding: 12px 14px;
+      font-family: inherit; font-size: .95rem;
+      transition: border-color .2s, box-shadow .2s;
+      outline: none; background: var(--gray-50);
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(26,79,168,.12);
+      background: #fff;
+    }
+    .form-group textarea { min-height: 110px; resize: vertical; }
+    .form-note {
+      font-size: .8rem; color: var(--gray-500); margin-bottom: 22px; line-height: 1.6;
+    }
+    .btn-submit {
+      width: 100%; background: var(--primary); color: #fff;
+      border: none; border-radius: 10px;
+      padding: 16px; font-size: 1.05rem; font-weight: 700;
+      cursor: pointer; transition: background .2s, transform .15s;
+    }
+    .btn-submit:hover { background: var(--primary-dark); transform: translateY(-1px); }
+    .btn-submit:active { transform: none; }
+    .required { color: #e74c3c; }
+
+    /* ===== MODAL ===== */
+    .modal-overlay {
+      position: fixed; inset: 0; background: rgba(0,0,0,.45);
+      z-index: 9999; display: none;
+      align-items: center; justify-content: center;
+    }
+    .modal-overlay.show { display: flex; }
+    .modal-box {
+      background: #fff; border-radius: 18px;
+      padding: 44px 36px; max-width: 420px; width: 90%;
+      text-align: center; box-shadow: 0 20px 60px rgba(0,0,0,.2);
+    }
+    .modal-icon {
+      width: 70px; height: 70px;
+      background: var(--primary-light);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 20px;
+      font-size: 2rem; color: var(--primary);
+    }
+    .modal-box h3 { font-size: 1.3rem; font-weight: 700; margin-bottom: 12px; }
+    .modal-box p { color: var(--gray-500); font-size: .94rem; line-height: 1.7; margin-bottom: 24px; }
+    .btn-modal-close {
+      background: var(--primary); color: #fff;
+      border: none; border-radius: 10px;
+      padding: 12px 32px; font-size: .97rem; font-weight: 700;
+      cursor: pointer; transition: background .2s;
+    }
+    .btn-modal-close:hover { background: var(--primary-dark); }
+
+    /* ===== FLOATING BTNS ===== */
+    .float-btns {
+      position: fixed; bottom: 28px; right: 24px;
+      z-index: 800;
+      display: flex; flex-direction: column; gap: 12px;
+      opacity: 0; transform: translateY(20px);
+      transition: opacity .3s, transform .3s;
+      pointer-events: none;
+    }
+    .float-btns.show { opacity: 1; transform: translateY(0); pointer-events: auto; }
+    .float-btn {
+      width: 52px; height: 52px;
+      border-radius: 50%; border: none;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.25rem; cursor: pointer;
+      box-shadow: 0 4px 16px rgba(0,0,0,.18);
+      transition: transform .2s;
+      text-decoration: none;
+    }
+    .float-btn:hover { transform: scale(1.1); }
+    .float-btn.phone { background: var(--primary); color: #fff; }
+    .float-btn.kakao { background: #fee500; color: #3a1d1d; }
+    .float-btn.scroll-top { background: var(--gray-700); color: #fff; font-size: 1rem; }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: var(--gray-900); color: rgba(255,255,255,.6);
+      padding: 48px 0 32px;
+    }
+    .footer-inner {
+      display: flex; justify-content: space-between; align-items: flex-start;
+      gap: 32px; flex-wrap: wrap;
+    }
+    .footer-brand .logo { color: #fff; margin-bottom: 14px; }
+    .footer-brand p { font-size: .88rem; line-height: 1.8; max-width: 320px; }
+    .footer-contact a {
+      display: flex; align-items: center; gap: 10px;
+      color: rgba(255,255,255,.7); font-size: .9rem;
+      margin-bottom: 10px; transition: color .2s;
+    }
+    .footer-contact a:hover { color: #fff; }
+    .footer-contact a i { color: var(--accent); width: 16px; }
+    .footer-bottom {
+      margin-top: 36px; padding-top: 20px;
+      border-top: 1px solid rgba(255,255,255,.1);
+      text-align: center; font-size: .82rem;
+    }
+
+    /* ===== MOBILE NAV DRAWER ===== */
+    .nav-drawer {
+      position: fixed; top: 64px; left: 0; right: 0; bottom: 0;
+      background: #fff; z-index: 850;
+      display: none; flex-direction: column;
+      padding: 24px 20px;
+    }
+    .nav-drawer.open { display: flex; }
+    .nav-drawer a {
+      padding: 16px 0; border-bottom: 1px solid var(--gray-100);
+      font-size: 1rem; font-weight: 500; color: var(--gray-700);
+    }
+    .nav-drawer a:hover { color: var(--primary); }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 900px) {
+      .about-grid { grid-template-columns: 1fr; }
+      .about-img-wrap { height: 200px; }
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .notice-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 680px) {
+      section { padding: 60px 0; }
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: block; }
+      .hero-inner { flex-direction: column; }
+      .hero-card { width: 100%; min-width: unset; }
+      .services-grid { grid-template-columns: 1fr; }
+      .form-wrap { padding: 28px 20px; }
+      .form-row { grid-template-columns: 1fr; }
+      .footer-inner { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header id="main-header">
+  <div class="container">
+    <nav>
+      <a href="#hero" class="logo">
+        <i class="fa-solid fa-scale-balanced"></i>
+        세무회계청천
+      </a>
+      <ul class="nav-links">
+        <li><a href="#about">사무소 소개</a></li>
+        <li><a href="#services">서비스 안내</a></li>
+        <li><a href="#notice">이용 안내</a></li>
+        <li><a href="#faq">자주 묻는 질문</a></li>
+      </ul>
+      <a href="#consult" class="nav-cta">상담 신청</a>
+      <button class="hamburger" id="hamburger" aria-label="메뉴 열기">
+        <i class="fa-solid fa-bars" id="hamburger-icon"></i>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<!-- 모바일 네비게이션 드로어 -->
+<div class="nav-drawer" id="nav-drawer">
+  <a href="#about" class="drawer-link"><i class="fa-solid fa-building-columns" style="color:var(--primary);margin-right:10px;"></i>사무소 소개</a>
+  <a href="#services" class="drawer-link"><i class="fa-solid fa-list-check" style="color:var(--primary);margin-right:10px;"></i>서비스 안내</a>
+  <a href="#notice" class="drawer-link"><i class="fa-solid fa-circle-info" style="color:var(--primary);margin-right:10px;"></i>이용 안내</a>
+  <a href="#faq" class="drawer-link"><i class="fa-solid fa-question-circle" style="color:var(--primary);margin-right:10px;"></i>자주 묻는 질문</a>
+  <a href="#consult" class="drawer-link" style="color:var(--primary);font-weight:700;"><i class="fa-solid fa-pen-to-square" style="margin-right:10px;"></i>상담 신청</a>
+</div>
+
+<!-- ===== HERO ===== -->
+<section id="hero">
+  <div class="container">
+    <div class="hero-inner">
+      <div class="hero-text">
+        <span class="hero-badge"><i class="fa-solid fa-location-dot"></i> &nbsp;인천 송도 · 연수구</span>
+        <h1 class="hero-title">
+          세금 걱정은 저희가<br>
+          <span>함께 해결합니다</span>
+        </h1>
+        <p class="hero-desc">
+          세무회계청천 김지수 세무사입니다.<br>
+          개인·법인 사업자의 세무 전반을 성실하게 도와드립니다.
+        </p>
+        <div class="hero-btns">
+          <a href="#consult" class="btn-primary">
+            <i class="fa-solid fa-pen-to-square"></i> 상담 신청하기
+          </a>
+          <a href="tel:032-566-2251" class="btn-outline">
+            <i class="fa-solid fa-phone"></i> 032-566-2251
+          </a>
+        </div>
+      </div>
+      <div class="hero-card">
+        <div class="hero-card-item">
+          <i class="fa-solid fa-map-pin"></i>
+          <span>인천 연수구 하모니로 158<br>송도타임스페이스 A동 406호</span>
+        </div>
+        <div class="hero-card-item">
+          <i class="fa-solid fa-phone"></i>
+          <span>032-566-2251</span>
+        </div>
+        <div class="hero-card-item">
+          <i class="fa-solid fa-clock"></i>
+          <span>평일 09:00 – 18:00<br>점심 12:00 – 13:00</span>
+        </div>
+        <div class="hero-card-item">
+          <i class="fa-brands fa-kakaotalk"></i>
+          <span>카카오톡 채널 @세무회계청천</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ABOUT ===== -->
+<section id="about">
+  <div class="container">
+    <div class="section-title">
+      <span class="label">ABOUT</span>
+      <h2>사무소 소개</h2>
+      <p>세무회계청천은 인천 송도에 위치한 세무사 사무소입니다.</p>
+    </div>
+    <div class="about-grid">
+      <div class="about-img-wrap">
+        <i class="fa-solid fa-scale-balanced"></i>
+      </div>
+      <div class="about-text">
+        <h3>김지수 세무사</h3>
+        <p class="sub">세무회계청천 대표 세무사</p>
+        <p>
+          유통업·학원업·교육 관련 스타트업 등 다양한 업종을 직접 경험한 후
+          세무사로서 사업자 분들의 현실적인 어려움을 이해하고자 합니다.
+          세금을 공부하는 과정에서 흥미를 느껴 세무사가 되었으며,
+          현재 세무회계청천을 운영하고 있습니다.
+        </p>
+        <p>
+          성실하고 투명한 세무 서비스로 고객 여러분 곁에 함께하겠습니다.
+        </p>
+        <div class="about-info-list">
+          <div class="about-info-item">
+            <i class="fa-solid fa-location-dot"></i>
+            <span>인천광역시 연수구 하모니로 158, 송도타임스페이스 A동 406호</span>
+          </div>
+          <div class="about-info-item">
+            <i class="fa-solid fa-phone"></i>
+            <span>032-566-2251</span>
+          </div>
+          <div class="about-info-item">
+            <i class="fa-brands fa-kakaotalk"></i>
+            <span>카카오톡 채널: 세무회계청천 (@_IciYxb)</span>
+          </div>
+          <div class="about-info-item">
+            <i class="fa-solid fa-blog"></i>
+            <span>네이버 블로그: honestcta</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SERVICES ===== -->
+<section id="services">
+  <div class="container">
+    <div class="section-title">
+      <span class="label">SERVICES</span>
+      <h2>서비스 안내</h2>
+      <p>세무 전반에 걸친 다양한 서비스를 제공합니다.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon"><i class="fa-solid fa-file-invoice-dollar"></i></div>
+        <h3>기장 / 세무신고</h3>
+        <p>월별 기장 대행 및 부가가치세·원천세 신고를 정확하고 기한 내에 처리해 드립니다.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><i class="fa-solid fa-receipt"></i></div>
+        <h3>종합소득세 신고</h3>
+        <p>프리랜서, 개인사업자, 다중소득자의 종합소득세 신고를 꼼꼼하게 대행합니다.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><i class="fa-solid fa-house"></i></div>
+        <h3>양도소득세</h3>
+        <p>부동산·주식 등 자산 양도 시 발생하는 세금을 정확하게 계산하고 신고합니다.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><i class="fa-solid fa-hand-holding-heart"></i></div>
+        <h3>증여 · 상속세</h3>
+        <p>재산 이전에 따른 증여·상속세 신고 및 절세 방안을 함께 검토합니다.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><i class="fa-solid fa-store"></i></div>
+        <h3>사업자 등록</h3>
+        <p>창업 초기 사업자 등록부터 업종에 맞는 세무 구조 설계까지 지원합니다.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><i class="fa-solid fa-shield-halved"></i></div>
+        <h3>세무조사 대응</h3>
+        <p>세무조사 통지 시 자료 준비 및 대응 전략 수립을 도와드립니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== NOTICE ===== -->
+<section id="notice">
+  <div class="container">
+    <div class="section-title">
+      <span class="label">GUIDE</span>
+      <h2>이용 안내</h2>
+      <p>방문 전 업무 시간과 준비 사항을 확인해 주세요.</p>
+    </div>
+    <div class="notice-grid">
+      <!-- 업무 시간 -->
+      <div class="notice-box">
+        <h3><i class="fa-solid fa-clock"></i> 업무 시간</h3>
+        <table class="hours-table">
+          <tbody>
+            <tr><td>평일 (월 – 금)</td><td>09:00 – 18:00</td></tr>
+            <tr><td>점심 시간</td><td>12:00 – 13:00</td></tr>
+            <tr><td>토요일 · 일요일</td><td>휴무</td></tr>
+            <tr><td>공휴일</td><td>휴무</td></tr>
+          </tbody>
+        </table>
+        <p style="margin-top:14px;font-size:.83rem;color:var(--gray-500);">
+          ※ 방문 전 전화 또는 카카오톡으로 사전 예약을 권장합니다.
+        </p>
+      </div>
+
+      <!-- 상담 준비 사항 -->
+      <div class="notice-box">
+        <h3><i class="fa-solid fa-list-check"></i> 상담 시 준비 사항</h3>
+        <ul class="prepare-list">
+          <li>신분증 (본인 확인용)</li>
+          <li>사업자등록증 (사업자의 경우)</li>
+          <li>관련 세금 계산서·영수증 등 증빙 서류</li>
+          <li>직전연도 세무 신고 자료 (있는 경우)</li>
+          <li>문의 사항을 간략히 메모해 오시면 더욱 원활하게 상담이 진행됩니다.</li>
+        </ul>
+      </div>
+
+      <!-- 오시는 길 -->
+      <div class="notice-box" style="grid-column: 1 / -1;">
+        <h3><i class="fa-solid fa-map-location-dot"></i> 오시는 길</h3>
+        <p style="font-size:.92rem;color:var(--gray-700);margin-bottom:10px;">
+          <strong>주소</strong> &nbsp;인천광역시 연수구 하모니로 158, 송도타임스페이스 A동 406호
+        </p>
+        <p style="font-size:.88rem;color:var(--gray-500);margin-bottom:16px;">
+          인천지하철 1호선 센트럴파크역 인근 | 주차 가능 (타임스페이스 건물 주차장 이용)
+        </p>
+        <div class="map-placeholder">
+          <i class="fa-solid fa-map-pin"></i>
+          <span>송도타임스페이스 A동 406호</span>
+          <a href="https://naver.me/Gmb2zzKv" target="_blank" rel="noopener" class="map-link">
+            <i class="fa-solid fa-location-arrow"></i> 네이버 지도에서 보기
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section id="faq">
+  <div class="container">
+    <div class="section-title">
+      <span class="label">FAQ</span>
+      <h2>자주 묻는 질문</h2>
+      <p>궁금하신 사항은 언제든 편하게 문의해 주세요.</p>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q">
+          <span><span class="badge">Q.</span>처음 창업을 앞두고 있는데 어떤 도움을 받을 수 있나요?</span>
+          <i class="fa-solid fa-chevron-down"></i>
+        </button>
+        <div class="faq-a">
+          업종 선택, 사업자등록 방법, 세금 구조(부가가치세·소득세 등) 안내부터 기장 서비스까지 창업 초기에 필요한 세무 전반을 도와드립니다. 사전 상담 후 맞춤 안내를 제공합니다.
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">
+          <span><span class="badge">Q.</span>기장 서비스를 중간에 변경하거나 해지할 수 있나요?</span>
+          <i class="fa-solid fa-chevron-down"></i>
+        </button>
+        <div class="faq-a">
+          네, 계약 기간이나 조건은 상담을 통해 협의합니다. 중간 변경이나 해지와 관련된 사항도 개별 상황에 따라 안내해 드리니 먼저 문의해 주세요.
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">
+          <span><span class="badge">Q.</span>세무조사 통지를 받았습니다. 어떻게 해야 하나요?</span>
+          <i class="fa-solid fa-chevron-down"></i>
+        </button>
+        <div class="faq-a">
+          당황하지 마시고 즉시 연락 주세요. 조사 종류(일반·간편·서면 조사 등)를 확인하고, 필요한 자료 준비 및 대응 방향을 함께 검토해 드립니다.
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">
+          <span><span class="badge">Q.</span>프리랜서·유튜버도 세무 신고가 필요한가요?</span>
+          <i class="fa-solid fa-chevron-down"></i>
+        </button>
+        <div class="faq-a">
+          네, 프리랜서와 유튜버(크리에이터)는 매년 5월 종합소득세 신고 대상입니다. 소득 규모와 유형에 따라 신고 방법이 달라지므로 상담을 통해 정확한 안내를 받으시길 권장합니다.
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">
+          <span><span class="badge">Q.</span>방문 없이 비대면으로도 서비스가 가능한가요?</span>
+          <i class="fa-solid fa-chevron-down"></i>
+        </button>
+        <div class="faq-a">
+          전화, 카카오톡 채널, 이메일 등을 통해 비대면으로도 상담 및 업무 진행이 가능합니다. 서류 수수는 우편·이메일 등을 활용하여 안내드립니다.
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">
+          <span><span class="badge">Q.</span>세무 상담 비용이 궁금합니다.</span>
+          <i class="fa-solid fa-chevron-down"></i>
+        </button>
+        <div class="faq-a">
+          서비스 종류와 업무 범위에 따라 비용이 달라집니다. 구체적인 상담 후 안내해 드리므로 먼저 문의해 주시면 친절히 설명드리겠습니다.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONSULT FORM ===== -->
+<section id="consult">
+  <div class="container">
+    <div class="section-title">
+      <span class="label">CONTACT</span>
+      <h2>상담 신청</h2>
+      <p>아래 양식을 작성해 주시면 빠르게 연락드리겠습니다.</p>
+    </div>
+    <div class="form-wrap">
+      <form id="consult-form" novalidate>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="f-name">이름 <span class="required">*</span></label>
+            <input type="text" id="f-name" name="name" placeholder="홍길동" autocomplete="name" required />
+          </div>
+          <div class="form-group">
+            <label for="f-phone">연락처 <span class="required">*</span></label>
+            <input type="tel" id="f-phone" name="phone" placeholder="010-0000-0000" autocomplete="tel" required />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="f-type">상담 유형 <span class="required">*</span></label>
+            <select id="f-type" name="type" required>
+              <option value="">선택해주세요</option>
+              <option value="기장/세무신고">기장 / 세무신고</option>
+              <option value="종합소득세">종합소득세</option>
+              <option value="양도소득세">양도소득세</option>
+              <option value="증여·상속세">증여 · 상속세</option>
+              <option value="사업자등록">사업자 등록</option>
+              <option value="세무조사">세무조사 대응</option>
+              <option value="기타">기타</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="f-time">희망 상담 시간</label>
+            <select id="f-time" name="preferred_time">
+              <option value="">무관 / 조율 가능</option>
+              <option value="오전 (09:00~12:00)">오전 (09:00–12:00)</option>
+              <option value="오후 (13:00~18:00)">오후 (13:00–18:00)</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="f-msg">문의 내용</label>
+          <textarea id="f-msg" name="message" placeholder="문의하실 내용을 자유롭게 작성해 주세요. (선택 사항)"></textarea>
+        </div>
+        <p class="form-note">
+          ※ 접수된 내용은 순차적으로 확인 후 영업일 기준 1–2일 내 연락드립니다.<br>
+          ※ 개인정보는 상담 목적으로만 사용되며, 상담 완료 후 즉시 폐기됩니다.
+        </p>
+        <button type="submit" class="btn-submit" id="submit-btn">
+          <i class="fa-solid fa-paper-plane"></i> &nbsp;상담 신청하기
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="logo"><i class="fa-solid fa-scale-balanced"></i> 세무회계청천</div>
+        <p>인천 송도에서 개인·법인 사업자의 세무 전반을 성실하게 지원하는 세무사 사무소입니다.</p>
+      </div>
+      <div class="footer-contact">
+        <a href="tel:032-566-2251"><i class="fa-solid fa-phone"></i> 032-566-2251</a>
+        <a href="https://pf.kakao.com/_IciYxb" target="_blank" rel="noopener">
+          <i class="fa-brands fa-kakaotalk"></i> 카카오톡 채널
+        </a>
+        <a href="https://blog.naver.com/honestcta" target="_blank" rel="noopener">
+          <i class="fa-solid fa-blog"></i> 네이버 블로그
+        </a>
+        <a href="https://naver.me/Gmb2zzKv" target="_blank" rel="noopener">
+          <i class="fa-solid fa-map-location-dot"></i> 인천 연수구 하모니로 158, A동 406호
+        </a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © 2024 세무회계청천 김지수 세무사. All rights reserved.
+    </div>
+  </div>
+</footer>
+
+<!-- ===== MODAL ===== -->
+<div class="modal-overlay" id="success-modal">
+  <div class="modal-box">
+    <div class="modal-icon"><i class="fa-solid fa-check"></i></div>
+    <h3>상담 신청이 완료되었습니다!</h3>
+    <p>
+      입력하신 연락처로 영업일 기준 1–2일 내에 연락드리겠습니다.<br>
+      급하신 경우 <strong>032-566-2251</strong>로 전화 주세요.
+    </p>
+    <button class="btn-modal-close" id="modal-close">확인</button>
+  </div>
+</div>
+
+<!-- ===== FLOATING BTNS ===== -->
+<div class="float-btns" id="float-btns">
+  <a href="tel:032-566-2251" class="float-btn phone" title="전화 상담">
+    <i class="fa-solid fa-phone"></i>
+  </a>
+  <a href="https://pf.kakao.com/_IciYxb" target="_blank" rel="noopener" class="float-btn kakao" title="카카오톡 상담">
+    <i class="fa-brands fa-kakaotalk"></i>
+  </a>
+  <button class="float-btn scroll-top" id="scroll-top" title="맨 위로">
+    <i class="fa-solid fa-chevron-up"></i>
+  </button>
+</div>
+
+<!-- ===== SCRIPTS ===== -->
+<script>
+  /* ---- 스크롤 헤더 쉐도우 & 플로팅 버튼 ---- */
+  const header = document.getElementById('main-header');
+  const floatBtns = document.getElementById('float-btns');
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 40) {
+      header.classList.add('scrolled');
+      floatBtns.classList.add('show');
+    } else {
+      header.classList.remove('scrolled');
+      floatBtns.classList.remove('show');
+    }
+  });
+
+  document.getElementById('scroll-top').addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  /* ---- 모바일 햄버거 ---- */
+  const hamburger = document.getElementById('hamburger');
+  const hamburgerIcon = document.getElementById('hamburger-icon');
+  const navDrawer = document.getElementById('nav-drawer');
+  let drawerOpen = false;
+
+  hamburger.addEventListener('click', () => {
+    drawerOpen = !drawerOpen;
+    navDrawer.classList.toggle('open', drawerOpen);
+    hamburgerIcon.className = drawerOpen ? 'fa-solid fa-xmark' : 'fa-solid fa-bars';
+  });
+
+  document.querySelectorAll('.drawer-link').forEach(link => {
+    link.addEventListener('click', () => {
+      drawerOpen = false;
+      navDrawer.classList.remove('open');
+      hamburgerIcon.className = 'fa-solid fa-bars';
+    });
+  });
+
+  /* ---- FAQ 아코디언 ---- */
+  document.querySelectorAll('.faq-q').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.faq-item');
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+
+  /* ---- 전화번호 자동 포맷 ---- */
+  const phoneInput = document.getElementById('f-phone');
+  phoneInput.addEventListener('input', () => {
+    let val = phoneInput.value.replace(/\D/g, '');
+    if (val.length <= 3) phoneInput.value = val;
+    else if (val.length <= 7) phoneInput.value = val.slice(0, 3) + '-' + val.slice(3);
+    else phoneInput.value = val.slice(0, 3) + '-' + val.slice(3, 7) + '-' + val.slice(7, 11);
+  });
+
+  /* ---- 카드 Fade-in 애니메이션 ---- */
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.service-card').forEach(card => observer.observe(card));
+
+  /* ---- 상담 폼 제출 ---- */
+  const form = document.getElementById('consult-form');
+  const submitBtn = document.getElementById('submit-btn');
+  const modal = document.getElementById('success-modal');
+  const modalClose = document.getElementById('modal-close');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const name = document.getElementById('f-name').value.trim();
+    const phone = document.getElementById('f-phone').value.trim();
+    const type = document.getElementById('f-type').value;
+
+    if (!name) { alert('이름을 입력해 주세요.'); document.getElementById('f-name').focus(); return; }
+    if (!phone || phone.replace(/\D/g, '').length < 10) { alert('올바른 연락처를 입력해 주세요.'); phoneInput.focus(); return; }
+    if (!type) { alert('상담 유형을 선택해 주세요.'); document.getElementById('f-type').focus(); return; }
+
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> &nbsp;접수 중...';
+
+    const payload = {
+      name,
+      phone,
+      consultation_type: type,
+      preferred_time: document.getElementById('f-time').value || '무관',
+      message: document.getElementById('f-msg').value.trim(),
+      status: '접수',
+    };
+
+    try {
+      const res = await fetch('tables/consultations', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+      if (!res.ok) throw new Error('서버 오류');
+      form.reset();
+      modal.classList.add('show');
+    } catch (err) {
+      alert('접수 중 오류가 발생했습니다. 전화(032-566-2251)로 문의해 주세요.');
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> &nbsp;상담 신청하기';
+    }
+  });
+
+  modalClose.addEventListener('click', () => modal.classList.remove('show'));
+  modal.addEventListener('click', (e) => { if (e.target === modal) modal.classList.remove('show'); });
+</script>
+</body>
+</html>
